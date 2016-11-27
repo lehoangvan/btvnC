@@ -1,0 +1,72 @@
+#include"stack_self.h"
+
+StackType s1, s2, s;
+void initialize()
+{
+  s.top=-1; // s la variable => phai dung dau . de lay phan tu
+  s1.top=-1;
+  s2.top=-1;
+}
+
+int main()
+{
+  initialize();
+  char S1[MAX], S2[MAX]; // Dat ten trung voi ten bien khai bao _ anh Long
+  // o dong 3
+  printf("Enter S1: ");
+  scanf("%s",S1);
+  getchar();
+  printf("Enter S2: ");
+  scanf("%s",S2);
+  getchar();
+  int i, a=0;
+  int m=strlen(S1), n=strlen(S2);
+  if(m>=MAX||n>=MAX) printf("Too large\n");
+  //dung vong lap while chia cho 10>0 lay so du cung duoc
+
+  if(m<n) a=n; else a=m; //s.top=a;
+  int string1,string2;
+  string1=atoi(S1);
+  string2=atoi(S2);
+  printf("You have enter two numbers: %d, %d\n",string1, string2);
+  
+  for(i=0;i<a;i++)
+    {
+      s1.storage[i]=0;
+      s1.top++;
+      s2.storage[i]=0;
+      s2.top++;
+    }
+  
+  for (i=a-1;i>=0;i--)
+    {
+      s1.storage[i]=string1%10;
+      string1=string1/10;
+    }
+  display(s1);  printf("\n\n");
+
+  for(i=a-1;i>=0;i++)
+    {
+      s2.storage[i]=string2%10;
+      string2=string2/10;
+    }
+  display(s2); printf("\n\n");
+
+  for(i=0;i<a;i++)
+    {
+      s.storage[i]=0;
+      s.top++;
+    }
+  display(s); printf("\n\n");
+  int b;
+  double c;
+  for(i=a-1;i>0;i--)
+    {
+      if(c=floor((s1.storage[i-1]+s2.storage[i-1]+b)/10)>0) s.storage[i-1]++;
+      s.storage[i]=(s1.storage[i-1]+s2.storage[i-1]+b)%10;
+      b=s.storage[i-1];
+    }
+  display(s);
+
+  return 0;
+}
