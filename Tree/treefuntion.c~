@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<math.h>
+
+typedef struct treeNode{
+  char word[20]; //node's data ~ shoold be DataType Item;
+  Tnode *left;
+  Tnode *right;
+}treeNode;
+
+treeNode *makeTreeNode(char *word);
+treeNode *RandomInsert(treeNode *tree, char* word);
+void freeTree(treeNode *tree); //tree=root
+void printPreorder(treeNode *tree);
+void printPostorder(treeNode *tree);
+void printInorder(treeNode *tree);
+int countNodes(treeNode *tree);
+int depth(treeNode *tree);
+
+treeNode *makeTreeNode(char *word)
+{
+  treeNode *newNode=NULL;
+  newNode = (treeNode*)malloc(sizeof(treeNode));
+  if(newNode==NULL){
+    printf("Out of memory\n");
+    exit(1);
+  }
+  else{
+    newNode->left=NULL;
+    newNode->right=NULL;
+    strcpy(newNode->word,word);
+  }
+  return newNode;
+}
+
+int countNodes(treeNode *tree) //function counts number of nodes /////
+{
+  if(tree==NULL) return 0;
+  else{
+    int ld=countNodes(tree->left);
+    int rd=countNodes(tree->right);
+    return 1+ld+rd;
+  }
+}
+
+int depth(treeNode *tree)//function
+{

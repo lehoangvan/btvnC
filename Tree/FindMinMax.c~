@@ -1,0 +1,16 @@
+//find min max <=> find most left most right
+
+#include<stdio.h>
+
+typedef struct treeNode{
+  int x;
+  treeNode *left;
+  treeNode *right;
+} treeNode;
+
+treeNode *makeNewNode(int x) //sap xep vi tri luon
+{
+}
+
+int findmostleft(treeNode *root);
+int findmostright(treeNode *root);
