@@ -1,0 +1,16 @@
+#include<stdio.h>
+
+float lamtron(float n){
+  int i;
+  n*=100;
+  i=(int)n%10;
+  n=n-i;
+  if(i<5) i=0;
+  else i=10;
+  return (n+i)/100;
+}
+
+int main(){
+  printf("%f\n",lamtron(9.17));
+  return 0;
+}

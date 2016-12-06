@@ -1,0 +1,67 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+
+void copy_file(FILE *fptr1, FILE *fptr2){
+  char c;
+  while(1){
+    c = fgetc(fptr1);
+    if (c == EOF)
+      return;
+    else
+      fputc(c, fptr2);
+  }
+}
+
+void decrypt(char *input,  int d){
+  FILE *fptr1, *fptr2;
+
+  //ma hoa file input luu vao file buffer
+  fptr1 = fopen(input, "r");
+  if (fptr1 == NULL) {
+    printf("Cannot open %s.\n", input);
+    return;
+  }
+  else {
+    fptr2 = fopen("buffer.txt", "w+");
+    char c;
+    while(1) {
+      c= fgetc(fptr1);
+      if(c==EOF) break;
+      if(c>='a' && c<='z') {
+	if(c-d>='a' && c-d<='z') fputc(c-d,fptr2);
+	else fputc(c-d+26,fptr2);
+      }
+      else if(c>='A' && c<='Z') {
+	if(c-d>='A' && c-d<='Z') fputc(c-d,fptr2);
+	else fputc(c-d+26,fptr2);
+      }
+      else fputc(c+d,fptr2);
+    }
+    fclose(fptr2);
+  }
+  fclose(fptr1);
+
+  //chuyen du lieu da ma hoa tu buffer sang file input
+  fptr1 = fopen("buffer.txt", "r");
+  fptr2 = fopen(input, "w+");
+  copy_file(fptr1, fptr2);
+  printf("Process is completed. The file is decrypted \n");
+  fclose(fptr1);
+  fclose(fptr2);
+  remove("buffer.txt");
+}
+
+
+
+int main(int argc, char *argv[]){
+  if(argc == 3) {
+    char input[100];
+    strcpy(input,argv[1]);
+    int d = atoi(argv[2]);
+    decrypt(input,d);
+  }
+  else printf("Nhap sai! Phai truyen vao 3 doi so\n");
+  return 0;
+}

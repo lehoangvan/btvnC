@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+void print_replace(char *s, char *a, char *b){
+  int temp;
+  int count=0;
+  for(int i=0;i<strlen(s);i++){
+    //neu ky tu trong s trung voi ky tu dau tien cua a
+    if(s[i]==a[0]){
+      //luu lai vi tri cua i
+      temp=i;
+      //a co phai la chuoi con bat dau tu i cua s ko
+      for(i;i<temp+strlen(a);i++)
+	if(a[i-temp]!=s[i]) {
+	  i=temp;
+	  break;
+	}
+      //neu la chuoi con thi in chuoi b, bo qua cac ky tu cua chuoi a
+      if(i==temp+strlen(a)){
+	for(int j=0;j<strlen(b);j++) printf("%c",b[j]);
+	i--;
+	count++;
+      }
+      //khong thi chi in ky tu s[i]
+      else  printf("%c",s[i]);
+    }
+    else printf("%c",s[i]);
+  }
+  printf("\n");
+  if(count==0) printf("Khong ton tai chuoi con a trong s\n");
+  
+}
+
+int main(int argc, char *argv[]){
+  if(argc == 4) {
+    char s[100], a[10], b[10];
+    strcpy(s,argv[1]);
+    strcpy(a,argv[2]);
+    strcpy(b,argv[3]);
+    printf("--> ");
+    print_replace(s,a,b);
+  }
+  else printf("Nhap sai! Phai truyen vao 3 doi so\n");
+  return 0;
+}

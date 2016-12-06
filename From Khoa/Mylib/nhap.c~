@@ -1,0 +1,10 @@
+//so nguyen 1-10
+
+int songuyen(){
+  int n;
+  do {
+    if(scanf("%d",&n)==0) n=-1;
+  } while((getchar()!='\n')||(n<0)||(n>10));
+  return n;
+}
+

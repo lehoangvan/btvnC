@@ -1,0 +1,92 @@
+#include<stdio.h>
+
+typedef struct {
+char ten[30] ;
+int diem[5] ;
+} kqthidau ;
+
+
+int sovdv(){
+  int n;
+  do {
+    printf("Nhap so van dong vien: ");
+    if(scanf("%d",&n)==0) n=-1;
+  } while((getchar()!='\n')||(n<0)||(n>10));
+  return n;
+}
+
+int sodiem(){
+  int n;
+  do {
+    printf("Diem so: ");
+    if(scanf("%d",&n)==0) n=-1;
+  } while((getchar()!='\n')||(n<0)||(n>10));
+  return n;
+}
+
+void dangkyvdv(kqthidau kq[], int n){
+  int i;
+  for(i=0;i<n;i++){
+    printf("Nhap ten van dong vien: "); gets(kq[i].ten);
+  }
+  
+  printf("\n\nDanh sach van dong vien\n\n%-20s\n","Ho ten");
+  for(i=0;i<n;i++){
+    printf("%-20s",kq[i].ten);
+  }
+}
+
+void thidau(kqthidau kq[], int n){
+  int i,j;
+  for(i=0;i<n;i++){
+    printf("Nguoi thu %d\n",i+1);
+    for(j=0;j<5;j++){
+      printf("Lan ban %d. ",j+1); kq[i].diem[j]=sodiem();
+    }
+  }
+  
+}
+
+void menu(){
+  printf("Chuong trinh quan ly ket qua thi dau ban sung \n");
+  printf("Author: Anh Khoa\n\n");
+  printf("1.Dang ky van dong vien \n");
+  printf("2.Thi dau \n");
+  printf("3.Xep hang \n");
+  printf("4.Thoat \n");
+}
+
+int choose(){
+  int n;
+  do {
+    printf("Nhap lua chon: ");
+    if(scanf("%d",&n)==0) n=-1;
+  } while(getchar()!='\n');
+  return n;
+}
+
+int main(){
+  int c;
+  
+  do{
+    menu();
+    c = choose();
+    switch(c){
+    case 1:
+      
+      break;
+    case 2:
+
+      break;
+    case 3:
+
+      break;
+    case 4:
+
+      break;
+    default:
+      printf("Lua chon sai!\n\n");
+      break;
+    }
+  } while(c!= 4);
+}

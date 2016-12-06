@@ -1,0 +1,23 @@
+#include<stdio.h>
+int main()
+{
+    int sct;
+    do{
+        printf("1.Dung may\n");
+        printf("2.Roi may\n");
+        printf("3.In ra trang thai may\n");
+        printf("4.In ra dien nang tieu thu\n");
+        printf("5.In ra tong dien nang tieu thu va tien dien thanh toan\n");
+        printf("6.Thoat");
+        scanf("%d", &sct);
+    switch (sct){
+        case 1: break;
+        case 2: break;
+        case 3: break;
+        case 4: break;
+        case 5: break;  
+    }
+    }
+    while(sct ==5|| sct==6);
+    return 0;
+}

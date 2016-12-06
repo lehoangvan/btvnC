@@ -1,0 +1,21 @@
+#include<stdio.h>
+
+void PrintResult(int *x, int n){
+  for(int i=0;i<n;i++) printf("%d",x[i]);
+  printf("\n");
+}
+
+void Generate(int *x, int i, int n){
+  for(int j=0;j<=1;j++){
+    x[i]=j;
+    if(i==n) PrintResult(x);
+    else(Generate(i+1));
+  }
+}
+
+int main(){
+  int x[4];
+  Generate(1);
+  
+  return 0;
+}

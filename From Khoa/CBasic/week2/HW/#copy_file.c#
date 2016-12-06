@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void fix_file(FILE *fptr1, FILE *fptr2){
+  char c;
+  while(1){
+    c = fgetc(fptr1);
+    if (c == EOF)
+      return;
+    else
+      if(c=='\n') fputc('\n', fptr2);
+      fputc(c, fptr2);
+  }
+}
+
+int main(){
+  
+}

@@ -1,0 +1,16 @@
+#include<stdio.h>
+
+void nguyenam(){
+  char c;
+  int count=0;
+  printf("Nhap chuoi: ");
+  do{
+    c=getchar();
+    if((c=='a')||(c=='i')||(c=='u')||(c=='e')||(c=='y')||(c=='o')) {count++; c=c-20;}
+    putchar(c);
+  } while(c!='\n');
+}
+
+int main(){
+  
+}

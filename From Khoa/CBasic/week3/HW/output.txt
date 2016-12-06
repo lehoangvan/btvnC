@@ -1,0 +1,5 @@
+Difference lines: 1 2 
+
+ Line    File 1                        File 2                        
+  1      Nguyen Dao Anh Khoa           Anh Khoa                      
+  2      Nguyen Dao Danh Khoi          Danh Khoi                     

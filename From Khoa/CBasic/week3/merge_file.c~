@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void merge(FILE *fptr1, FILE *fptr2, FILE *fptr3){
+  char s1[200];
+  char s2[200];
+  while(1){
+	fgets(s1,200,fptr1);
+	fgets(s2,200,fptr1);
+      	fprintf(fptr3,"%s %s",s1,s2);
+      	if(fgets(s1,200,fptr1)==NULL && fgets(s2,200,fptr1)==NULL) break;
+  }
+}
+
+int main(int argc, char *argv[]) {
+  if(argc == 4) {
+    FILE *fptr1, *fptr2;
+    char input1[100];
+    char input2[100];
+    char output[100];
+    strcpy(input,argv[1]);
+    strcpy(output,argv[2]);
+    fptr1 = fopen(input1, "r");
+    fptr1 = fopen(input2, "r");
+    fptr3 = fopen(output, "w");
+    if (fptr1 == NULL) {
+      printf("Cannot open %s.\n", input1);
+      return 0;
+    }
+    else if (fptr2 == NULL) {
+      printf("Cannot open %s.\n", input2);
+      return 0;
+    }
+    else
+      merge(fptr1,fptr2,fprt3);
+    
+    printf("Process is completed.\n");
+    fclose(fptr1);
+    fclose(fptr2);
+  }
+  else printf("Nhap sai! Phai truyen vao 4 doi so\n");
+  return 0;
+}
